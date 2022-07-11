@@ -13,6 +13,14 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false
 			},
+			email: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			password: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
 			profession: {
 				type: Sequelize.STRING,
 				allowNull: true
@@ -24,14 +32,6 @@ module.exports = {
 			role: {
 				type: Sequelize.ENUM,
 				values: ['admin', 'students'],
-				allowNull: false
-			},
-			email: {
-				type: Sequelize.STRING,
-				allowNull: false
-			},
-			password: {
-				type: Sequelize.STRING,
 				allowNull: false
 			},
 			created_at: {
