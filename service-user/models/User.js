@@ -7,37 +7,39 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		name: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		email: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: false,
 			unique: true
 		},
 		password: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		role: {
-			type: Sequelize.ENUM,
+			type: DataTypes.ENUM,
 			values: ['admin', 'students'],
 			allowNull: false,
 			defaultValue: 'students'
 		},
 		avatar: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: true
 		},
 		profession: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 			allowNull: true
 		},
 		createdAt: {
-			type: Sequelize.DATE,
+			type: DataTypes.DATE,
+			allowNull: false
 		},
 		updatedAt: {
-			type: Sequelize.DATE,
+			type: DataTypes.DATE,
+			allowNull: false
 		},
 	}, {
 		timestamps: true,
@@ -46,4 +48,6 @@ module.exports = (sequelize, DataTypes) => {
 		underscored: true,
 		tableName: 'users',
 	})
+
+	return user
 }
