@@ -12,6 +12,7 @@ module.exports = async (req, res, next) => {
             })
         }
 
+        // inject user to request object
         req.user = decoded;
         return next();
     });
