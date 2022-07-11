@@ -15,18 +15,17 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		createdAt: {
+			field: 'created_at',
 			type: DataTypes.DATE,
 			allowNull: false,
 		},
 		updatedAt: {
+			field: 'updated_at',
 			type: DataTypes.DATE,
 			allowNull: false,
 		},
 	}, {
 		timestamps: true,
-		createdAt: 'created_at',
-		updatedAt: 'updated_at',
-		underscored: true,
 		tablename: 'refresh_tokens',
 	})
 
