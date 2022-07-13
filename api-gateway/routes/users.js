@@ -8,5 +8,6 @@ router.post('/register', usersHandler.register);
 router.post('/login', usersHandler.login);
 router.get('/', verifyToken, usersHandler.getUser);
 router.put('/', verifyToken, usersHandler.update);
+router.post('/logout', verifyToken, usersHandler.logout);
 
 module.exports = router;
