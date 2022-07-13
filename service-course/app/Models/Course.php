@@ -9,16 +9,21 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     protected $fillable = [
-        'mentor_id',
-        'name',
-        'certificate',
-        'thumbnail',
-        'type',
-        'status',
-        'price',
-        'level',
-        'description'
+        "mentor_id",
+        "name",
+        "certificate",
+        "thumbnail",
+        "type",
+        "status",
+        "price",
+        "level",
+        "description"
     ];
 
     public function mentor()
