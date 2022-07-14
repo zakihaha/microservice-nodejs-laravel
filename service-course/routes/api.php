@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MentorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,12 @@ Route::prefix('chapters')->group(function () {
     Route::post('', [ChapterController::class, 'create']);
     Route::put('{chapter:id}', [ChapterController::class, 'update']);
     Route::delete('{chapter:id}', [ChapterController::class, 'destroy']);
+});
+
+Route::prefix('lessons')->group(function () {
+    Route::get('', [LessonController::class, 'index']);
+    Route::get('{lesson:id}', [LessonController::class, 'show']);
+    Route::post('', [LessonController::class, 'create']);
+    Route::put('{lesson:id}', [LessonController::class, 'update']);
+    Route::delete('{lesson:id}', [LessonController::class, 'destroy']);
 });
