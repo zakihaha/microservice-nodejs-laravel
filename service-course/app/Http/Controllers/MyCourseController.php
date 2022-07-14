@@ -11,21 +11,13 @@ class MyCourseController extends Controller
     {
         $myCourses = $myCourses->newQuery();
 
-        if ($request->has('chapter_id')) {
-            $myCourses->where('chapter_id', $request->chapter_id);
+        if ($request->has('user_id')) {
+            $myCourses->where('user_id', $request->user_id);
         }
 
         return response()->json([
             'status' => 'success',
-            'data' => $myCourses->get()
-        ]);
-    }
-
-    public function show(MyCourse $myCourse)
-    {
-        return response()->json([
-            'status' => 'success',
-            'data' => $myCourse
+            'data' => $myCourses->with('course')->get()
         ]);
     }
 
@@ -62,31 +54,6 @@ class MyCourseController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $myCourse
-        ]);
-    }
-
-    public function update(Request $request, MyCourse $myCourse)
-    {
-        $request->validate([
-            'course_id' => 'required|integer|exists:courses,id',
-            'user_id' => 'required|integer',
-        ]);
-
-        $myCourse->update($request->all());
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $myCourse
-        ]);
-    }
-
-    public function destroy(MyCourse $myCourse)
-    {
-        $myCourse->delete();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'MyCourse deleted'
         ]);
     }
 }

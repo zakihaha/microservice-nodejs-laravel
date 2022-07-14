@@ -47,8 +47,5 @@ Route::prefix('image-courses')->group(function () {
 
 Route::prefix('my-courses')->group(function () {
     Route::get('', [MyCourseController::class, 'index']);
-    Route::get('{lesson:id}', [MyCourseController::class, 'show']);
     Route::post('', [MyCourseController::class, 'create']);
-    Route::put('{lesson:id}', [MyCourseController::class, 'update']);
-    Route::delete('{lesson:id}', [MyCourseController::class, 'destroy']);
 });
