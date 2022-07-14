@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MentorController;
 use Illuminate\Http\Request;
@@ -19,4 +20,12 @@ Route::prefix('courses')->group(function () {
     Route::post('', [CourseController::class, 'create']);
     Route::put('{course:id}', [CourseController::class, 'update']);
     Route::delete('{course:id}', [CourseController::class, 'destroy']);
+});
+
+Route::prefix('chapters')->group(function () {
+    Route::get('', [ChapterController::class, 'index']);
+    Route::get('{chapter:id}', [ChapterController::class, 'show']);
+    Route::post('', [ChapterController::class, 'create']);
+    Route::put('{chapter:id}', [ChapterController::class, 'update']);
+    Route::delete('{chapter:id}', [ChapterController::class, 'destroy']);
 });

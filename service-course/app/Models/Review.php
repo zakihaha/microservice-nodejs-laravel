@@ -9,6 +9,11 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     protected $dillable = [
         'course_id',
         'user_id',
