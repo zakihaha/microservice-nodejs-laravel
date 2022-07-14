@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ImageCourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\MyCourseController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('mentors')->group(function () {
@@ -42,4 +43,12 @@ Route::prefix('lessons')->group(function () {
 Route::prefix('image-courses')->group(function () {
     Route::post('', [ImageCourseController::class, 'create']);
     Route::delete('{imageCourse:id}', [ImageCourseController::class, 'destroy']);
+});
+
+Route::prefix('my-courses')->group(function () {
+    Route::get('', [MyCourseController::class, 'index']);
+    Route::get('{lesson:id}', [MyCourseController::class, 'show']);
+    Route::post('', [MyCourseController::class, 'create']);
+    Route::put('{lesson:id}', [MyCourseController::class, 'update']);
+    Route::delete('{lesson:id}', [MyCourseController::class, 'destroy']);
 });
