@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapter;
 use App\Models\Course;
+use App\Models\MyCourse;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -27,6 +29,23 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        $course->load('images', 'mentor', 'chapters.lessons', 'reviews');
+
+        if (count($course['reviews']) > 0) {
+            $userIds = $course['reviews']->pluck('user_id')->toArray();
+            $users = getUsersByIds($userIds);
+
+            // combine course reviews with users
+            foreach ($course['reviews'] as $key => $review) {
+                $course['reviews'][$key]['user'] = $users['data'][array_search($review['user_id'], array_column($users['data'], 'id'))];
+            }
+        }
+
+        $course['total_student'] = MyCourse::where('course_id', $course->id)->count();
+
+        $countChapterVideos = Chapter::where('course_id', $course->id)->withCount('lessons')->get()->toArray();
+        $course['total_videos'] = array_sum(array_column($countChapterVideos, 'lessons_count'));
+
         return response()->json([
             'status' => 'success',
             'data' => $course
