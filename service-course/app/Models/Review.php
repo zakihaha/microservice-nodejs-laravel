@@ -14,7 +14,7 @@ class Review extends Model
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
-    protected $dillable = [
+    protected $fillable = [
         'course_id',
         'user_id',
         'rating',

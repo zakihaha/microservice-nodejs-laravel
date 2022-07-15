@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageCourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\MyCourseController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('mentors')->group(function () {
@@ -48,4 +49,10 @@ Route::prefix('image-courses')->group(function () {
 Route::prefix('my-courses')->group(function () {
     Route::get('', [MyCourseController::class, 'index']);
     Route::post('', [MyCourseController::class, 'create']);
+});
+
+Route::prefix('reviews')->group(function () {
+    Route::post('', [ReviewController::class, 'create']);
+    Route::put('{review:id}', [ReviewController::class, 'update']);
+    Route::delete('{review:id}', [ReviewController::class, 'destroy']);
 });
