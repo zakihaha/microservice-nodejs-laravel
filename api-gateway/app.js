@@ -15,6 +15,7 @@ const mentorsRouter = require('./routes/mentors');
 const chaptersRouter = require('./routes/chapters');
 const lessonsRouter = require('./routes/lessons');
 const imageCoursesRouter = require('./routes/imageCourses');
+const myCoursesRouter = require('./routes/myCourses');
 
 const verifyToken = require('./middleware/verifyToken');
 
@@ -37,5 +38,6 @@ app.use('/courses', coursesRouter);
 app.use('/chapters', verifyToken, chaptersRouter);
 app.use('/lessons', verifyToken, lessonsRouter);
 app.use('/image-courses', verifyToken, imageCoursesRouter);
+app.use('/my-courses', verifyToken, myCoursesRouter);
 
 module.exports = app;
