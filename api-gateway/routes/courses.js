@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
-const { APP_NAME } = process.env
+const express = require('express');
+const router = express.Router();
 
-router.get('/', function (req, res, next) {
-  res.send('COURSE');
-});
+const coursesHandler = require('./handler/courses');
+
+router.get('/', coursesHandler.getAll);
+router.get('/:id', coursesHandler.get);
+router.post('/', coursesHandler.create);
+router.put('/:id', coursesHandler.update);
+router.delete('/:id', coursesHandler.destroy);
 
 module.exports = router;
