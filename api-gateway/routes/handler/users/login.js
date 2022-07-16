@@ -7,10 +7,13 @@ const api = apiAdapter(URL_SERVICE_USER);
 
 module.exports = async (req, res) => {
     try {
+        // send login request
         const user = await api.post('/users/login', req.body);
         const data = user.data.data
 
+        // create access token
         const token = jwt.sign({ data }, JWT_SECRET, { expiresIn: JWT_ACCESS_TOKEN_EXPIRED });
+        // create refresh token
         const refreshToken = jwt.sign({ data }, JWT_SECRET_REFRESH_TOKEN, { expiresIn: JWT_REFRESH_TOKEN_EXPIRED });
 
         // store refresh token in database
