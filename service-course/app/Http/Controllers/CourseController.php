@@ -61,7 +61,7 @@ class CourseController extends Controller
             "thumbnail" => 'string|url',
             "type" => 'required|in:free,premium',
             "status" => 'required|in:draft,published',
-            "price" => 'integer',
+            "price" => 'integer|required_if:type,premium|min:2',
             "level" => 'required|in:all-level,beginner,intermediate,advanced',
             "description" => 'string',
         ]);
