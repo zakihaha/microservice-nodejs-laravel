@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Http;
 
-function getUser ($userId) {
-    $url = env('SERVICE_USER_URL').'users/'.$userId;
+function getUser($userId)
+{
+    $url = env('SERVICE_USER_URL') . 'users/' . $userId;
 
     try {
         $response = Http::timeout(10)->get($url);
@@ -19,8 +20,9 @@ function getUser ($userId) {
     }
 }
 
-function getUsersByIds ($userIds = []) {
-    $url = env('SERVICE_USER_URL').'users/';
+function getUsersByIds($userIds = [])
+{
+    $url = env('SERVICE_USER_URL') . 'users/';
 
     try {
         if (count($userIds) == 0) {
@@ -33,13 +35,32 @@ function getUsersByIds ($userIds = []) {
 
         $response = Http::timeout(10)->get($url, ['user_ids' => $userIds]);
         $data = $response->json();
-        $data['http_code'] = $response->status();
+        $data['http_code'] = $response->getStatusCode();
         return $data;
     } catch (\Throwable $th) {
         return [
             'status' => 'error',
             'http_code' => 500,
-            'message' => $th->getMessage()
+            'message' => 'Service user unavailable'
+        ];
+    }
+}
+
+
+function orderCourse($params)
+{
+    $url = env('SERVICE_PAYMENT_URL') . 'api/orders';
+
+    try {
+        $response = Http::post($url, $params);
+        $data = $response->json();
+        $data['http_code'] = $response->getStatusCode();
+        return $data;
+    } catch (\Throwable $th) {
+        return [
+            'status' => 'error',
+            'http_code' => 500,
+            'message' => 'Service payment unavailable'
         ];
     }
 }

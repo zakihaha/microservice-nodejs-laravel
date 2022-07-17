@@ -49,7 +49,7 @@ Route::prefix('image-courses')->group(function () {
 Route::prefix('my-courses')->group(function () {
     Route::get('', [MyCourseController::class, 'index']);
     Route::post('', [MyCourseController::class, 'create']);
-    Route::post('premium', [MyCourseController::class, 'createPremium']);
+    Route::post('premium', [MyCourseController::class, 'createPremiumCourse']);
 });
 
 Route::prefix('reviews')->group(function () {
