@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const { APP_NAME } = process.env
 
-router.get('/', function (req, res, next) {
-  res.send('Orders');
-});
+const ordersHandler = require('./handler/orders');
+
+router.get('/', ordersHandler.getOrders);
+router.post('/', ordersHandler.createOrder);
 
 module.exports = router;

@@ -70,14 +70,14 @@ class MyCourseController extends Controller
                 'status' => $order['status'],
                 'data' => $order['data']
             ], 201);
+        } else {
+            $myCourse = MyCourse::create($request->all());
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $myCourse
+            ]);
         }
-
-        $myCourse = MyCourse::create($request->all());
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $myCourse
-        ]);
     }
 
     public function createPremiumCourse(Request $request)
