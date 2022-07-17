@@ -56,4 +56,30 @@ class MyCourseController extends Controller
             'data' => $myCourse
         ]);
     }
+
+    public function createPremium(Request $request)
+    {
+        $request->validate([
+            'course_id' => 'required|integer|exists:courses,id',
+            'user_id' => 'required|integer',
+        ]);
+
+        $isExistMyCourse = MyCourse::where('course_id', $request->course_id)
+            ->where('user_id', $request->user_id)
+            ->exists();
+
+        if ($isExistMyCourse) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You have already enrolled in this course'
+            ], 409);
+        }
+
+        $myCourse = MyCourse::create($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $myCourse
+        ]);
+    }
 }
