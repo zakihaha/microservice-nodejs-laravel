@@ -1,22 +1,23 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import axios from 'configs/axios'
+import axios from 'src/configs/axios'
 
-export default function Home(props) {
-	console.log(props);
+export default function Home({ data }) {
 	return (
-		<div className="container mx-auto mt-4">
+		<>
 			<Head>
 				<title>LAFTER</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main>
-				<div>Selamat datang di halaman utama</div>
-				<Link href="/random"><a>Bring me to Random Page</a></Link>
+				<section className='header-clipping pt-10'>
+					{/* <Circle className="absolute left-0 bottom-0"></Circle> */}
+					<div className="sunshine"></div>
+					<div className="container mx-auto"></div>
+				</section>
 			</main>
-		</div>
+		</>
 	)
 }
 
