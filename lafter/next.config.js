@@ -8,28 +8,13 @@ const withImages = require('next-images');
 
 const path = require('path');
 
-const svgPlugin = withReactSvg({
-    include: path.resolve(__dirname, './public/images'),
-    webpack(config, options) {
-        return config;
-    }
-})
-
-const imagesPlugin = withImages({})
-
-const cssPlugin = withCSS({})
-
 module.exports = withPlugins([
-    cssPlugin,
-    svgPlugin,
-    imagesPlugin
-    // [withImages],
-    // withCSS({}),
-    // withImages({}),
-    // withReactSvg({
-    //     include: path.resolve(__dirname, './public/images'),
-    //     webpack(config, options) {
-    //         return config
-    //     }
-    // })
+    [withCSS],
+    [withImages],
+    [withReactSvg, {
+        include: path.resolve(__dirname, './public/images'),
+        webpack(config, options) {
+            return config;
+        }
+    }]
 ]);
