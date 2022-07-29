@@ -13,7 +13,7 @@ function Random({ data }) {
                 <h1 className="text-3xl">Fethcing random words</h1>
                 {
                     data.map(todo => {
-                        return <li className="border border-indigo-700 p-4" key={todo.id}>{todo?.title ?? "-"} <Link href={`/random/${todo.id}`}><a>Launch</a></Link> </li>
+                        return <li className="border border-indigo-700 p-4" key={todo.id}>{todo?.title ?? "-"} <Link href="/random/[id]" as={`/random/${todo.id}`}><a>Launch</a></Link> </li>
                     })
                 }
             </main>
