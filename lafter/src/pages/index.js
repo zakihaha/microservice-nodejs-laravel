@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-
 import axios from 'src/configs/axios'
 
+import Header from './parts/Header.js'
 export default function Home({ data }) {
 	return (
 		<>
@@ -14,7 +14,9 @@ export default function Home({ data }) {
 				<section className='header-clipping pt-10'>
 					{/* <Circle className="absolute left-0 bottom-0"></Circle> */}
 					<div className="sunshine"></div>
-					<div className="container mx-auto"></div>
+					<div className="container mx-auto">
+						<Header></Header>
+					</div>
 				</section>
 			</main>
 		</>
