@@ -19,9 +19,9 @@
     transform: translateX(-50%);
     width: 515px;
     height: 90%;
-    opacity: 0.8;
     clip-path: polygon(36% 0, 65% 0, 47% 100%, 0% 100%);
-    background: transparent linear-gradient(130.09deg, #3d47bd 0%, #2e37a4 50.8%);
+    background: transparent linear-gradient(146.62deg, #3D47BD 17.72%, #2E37A4 56.8%);;
+    opacity: 0.8;
 }
 
 .header-clipping::before {

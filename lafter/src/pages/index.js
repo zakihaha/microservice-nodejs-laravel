@@ -3,6 +3,8 @@ import Link from 'next/link'
 import axios from 'src/configs/axios'
 
 import Header from './parts/Header.js'
+import Hero from './parts/Hero.js'
+import Circle from 'public/images/hero-circle.svg'
 export default function Home({ data }) {
 	return (
 		<>
@@ -12,10 +14,11 @@ export default function Home({ data }) {
 
 			<main>
 				<section className='header-clipping pt-10'>
-					{/* <Circle className="absolute left-0 bottom-0"></Circle> */}
+					<Circle className="absolute left-0 bottom-0"></Circle>
 					<div className="sunshine"></div>
 					<div className="container mx-auto">
 						<Header></Header>
+						<Hero></Hero>
 					</div>
 				</section>
 			</main>

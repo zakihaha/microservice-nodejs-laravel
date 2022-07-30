@@ -24,7 +24,7 @@ function Header({onLight}) {
                 <li>
                     <Link href='/'>
                         <a
-                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3"].join(" ")}
+                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3 font-medium"].join(" ")}
                         >
                             Home
                         </a>
@@ -33,7 +33,7 @@ function Header({onLight}) {
                 <li>
                     <Link href='/'>
                         <a
-                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3"].join(" ")}
+                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3 font-medium"].join(" ")}
                         >
                             Pricing
                         </a>
@@ -42,7 +42,7 @@ function Header({onLight}) {
                 <li>
                     <Link href='/'>
                         <a
-                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3"].join(" ")}
+                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3 font-medium"].join(" ")}
                         >
                             Features
                         </a>
@@ -51,7 +51,7 @@ function Header({onLight}) {
                 <li>
                     <Link href='/'>
                         <a
-                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3"].join(" ")}
+                            className={[linkColor, "hover:text-teal-500 text-lg px-6 py-3 font-medium"].join(" ")}
                         >
                             Story
                         </a>
@@ -62,7 +62,7 @@ function Header({onLight}) {
                         target="_blank"
                         rel='noopener noereferrer'
                         href={linkCTA}
-                        className="bg-indigo-700 hover:bg-indigo-800 transition-all duration-200 text-white hover:text-teal-500 text-lg px-6 py-3 ml-6"
+                        className="bg-indigo-700 hover:bg-indigo-800 transition-all duration-200 text-white hover:text-teal-500 text-lg px-6 py-3 font-medium ml-6"
                     >
                         {textCTA}
                     </a>
