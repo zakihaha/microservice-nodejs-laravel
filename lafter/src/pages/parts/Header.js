@@ -6,7 +6,6 @@ import propTypes from 'prop-types'
 import Logo from 'public/images/logo.svg'
 
 function Header({onLight}) {
-    console.log(onLight);
     const linkColor = onLight ? "text-gray-900" : "text-white"
     const router = useRouter()
     
