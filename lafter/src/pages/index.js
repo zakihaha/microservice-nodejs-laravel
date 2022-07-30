@@ -4,6 +4,7 @@ import axios from 'src/configs/axios'
 
 import Header from './parts/Header.js'
 import Hero from './parts/Hero.js'
+import Clients from './parts/Clients.js'
 import Circle from 'public/images/hero-circle.svg'
 export default function Home({ data }) {
 	return (
@@ -20,6 +21,9 @@ export default function Home({ data }) {
 						<Header></Header>
 						<Hero></Hero>
 					</div>
+				</section>
+				<section className='container mx-auto pt-24'>
+					<Clients></Clients>
 				</section>
 			</main>
 		</>
