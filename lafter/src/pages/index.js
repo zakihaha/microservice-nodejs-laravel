@@ -5,7 +5,8 @@ import axios from 'src/configs/axios'
 import Header from './parts/Header.js'
 import Hero from './parts/Hero.js'
 import Clients from './parts/Clients.js'
-import ListCourses from './parts/ListCourses/index'
+import ListCourses from './parts/ListCourses'
+import ListCategories from './parts/ListCategories'
 
 import Circle from 'public/images/hero-circle.svg'
 
@@ -30,6 +31,11 @@ export default function Home({ data }) {
 				</section>
 				<section className="container mx-auto pt-24">
 					<ListCourses data={data}></ListCourses>
+				</section>
+				<section className="container mx-auto pt-24">
+					<ListCategories></ListCategories>
+				</section>
+				<section className="container mx-auto py-24">
 				</section>
 			</main>
 		</>
