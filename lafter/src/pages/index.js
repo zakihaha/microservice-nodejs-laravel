@@ -2,11 +2,12 @@ import Head from 'next/head'
 import Link from 'next/link'
 import axios from 'src/configs/axios'
 
-import Header from './parts/Header.js'
-import Hero from './parts/Hero.js'
-import Clients from './parts/Clients.js'
-import ListCourses from './parts/ListCourses'
-import ListCategories from './parts/ListCategories'
+import Header from 'src/pages/parts/Header.js'
+import Hero from 'src/pages/parts/Hero.js'
+import Clients from 'src/pages/parts/Clients.js'
+import ListCourses from 'src/pages/parts/ListCourses'
+import ListCategories from 'src/pages/parts/ListCategories'
+import Footer from 'src/pages/parts/Footer'
 
 import Circle from 'public/images/hero-circle.svg'
 
@@ -35,7 +36,8 @@ export default function Home({ data }) {
 				<section className="container mx-auto pt-24">
 					<ListCategories></ListCategories>
 				</section>
-				<section className="container mx-auto py-24">
+				<section className="mt-24 bg-indigo-1000 py-12">
+					<Footer></Footer>
 				</section>
 			</main>
 		</>

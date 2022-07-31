@@ -1,29 +1,21 @@
-module.exports = ({ colors }) => ({
-    inherit: colors.inherit,
-    current: colors.current,
-    transparent: colors.transparent,
-    black: colors.black,
-    white: colors.white,
-    slate: colors.slate,
-    gray: {...colors.gray, 200: "E8F0FA", 600: "7186A0", 900: "#132B50"},
-    zinc: colors.zinc,
-    neutral: colors.neutral,
-    stone: colors.stone,
-    red: colors.red,
-    orange: {...colors.orange, 500: "#FE721C"},
-    amber: colors.amber,
-    yellow: colors.yellow,
-    lime: colors.lime,
-    green: colors.green,
-    emerald: colors.emerald,
-    teal: {...colors.teal, 400: "#36C2CF"},
-    cyan: colors.cyan,
-    sky: colors.sky,
-    blue: colors.blue,
-    indigo: {...colors.indigo, 700: "#4D55BC", 800: "#4D55BC", 900: "#2E37A4"},
-    violet: colors.violet,
-    purple: colors.purple,
-    fuchsia: colors.fuchsia,
-    pink: colors.pink,
-    rose: colors.rose,
-})
+module.exports = {
+    gray: {
+        200: "#E8F0FA",
+        600: "#7186A0",
+        800: "#333769",
+        900: "#132B50",
+    },
+    orange: {
+        500: "#FE721C",
+    },
+    teal: {
+        400: "#36C2CF",
+    },
+    indigo: {
+        500: "#53589D",
+        700: "#4D55BC",
+        800: "#4D55BC",
+        900: "#2E37A4",
+        1000: "#161A4F",
+    }
+}
