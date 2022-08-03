@@ -3,12 +3,12 @@ import Link from 'next/link'
 import axios from 'src/configs/axios'
 
 import courses from 'src/constants/api/courses'
-import Header from 'src/pages/parts/Header.js'
-import Hero from 'src/pages/parts/Hero.js'
-import Clients from 'src/pages/parts/Clients.js'
-import ListCourses from 'src/pages/parts/ListCourses'
-import ListCategories from 'src/pages/parts/ListCategories'
-import Footer from 'src/pages/parts/Footer'
+import Header from 'src/parts/Header.js'
+import Hero from 'src/parts/Hero.js'
+import Clients from 'src/parts/Clients.js'
+import ListCourses from 'src/parts/ListCourses'
+import ListCategories from 'src/parts/ListCategories'
+import Footer from 'src/parts/Footer'
 
 import Circle from 'public/images/hero-circle.svg'
 

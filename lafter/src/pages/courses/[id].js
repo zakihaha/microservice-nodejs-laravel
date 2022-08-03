@@ -1,12 +1,39 @@
 import Head from "next/head";
 import Link from "next/link";
 import YouTube from "react-youtube";
+import { useEffect, useRef, useState } from "react";
+import { CSSTransition } from 'react-transition-group'
 
 import courses from "src/constants/api/courses";
-import Header from "src/pages/parts/Header";
+import Header from "src/parts/Header";
+import Feature from "src/parts/Details/Feature";
+import NameTag from 'public/images/detail-student.svg'
+import Playback from 'public/images/detail-video.svg'
+import Certificate from 'public/images/detail-certificate.svg'
+import Footer from "src/parts/Footer";
+import { formatThousand } from "src/helpers";
 
 function DetailCourses({ data }) {
     console.log(data);
+
+    const footer = useRef(null)
+    const [isSticky, setIsSticky] = useState(true)
+
+    useEffect(() => {
+        const stickyOffsetTop = footer.current.getBoundingClientRect().top
+
+        const stickyMetaToggler = () => {
+            setIsSticky(stickyOffsetTop >= window.pageYOffset + window.innerHeight)
+        }
+
+        window.addEventListener('scroll', stickyMetaToggler)
+
+        return () => {
+            window.removeEventListener('scroll', stickyMetaToggler)
+        }
+
+    }, [])
+
     return (
         <>
             <Head>
@@ -24,13 +51,13 @@ function DetailCourses({ data }) {
                                 playerVars: {
                                     loop: 1,
                                     mute: 1,
-                                    autoplay: 1,
+                                    autoplay: 0,
                                     controls: 0,
                                     showinfo: 0,
                                 }
                             }}
                             onEnd={(event) => {
-                                event.target.playVide()
+                                event.target.playVideo()
                             }}
                         >
                         </YouTube>
@@ -48,6 +75,72 @@ function DetailCourses({ data }) {
                 <div className="container mx-auto z-10 relative">
                     <Header></Header>
                 </div>
+            </section>
+
+            <section className="container mx-auto pt-24 relative">
+                <div className="absolute top-0 w-full transform -translate-y-1/2">
+                    <div className="w-3/4 mx-auto">
+                        <div className="flex justify-between">
+                            <Feature data={{
+                                icon: <NameTag className="fill-teal-500" />,
+                                meta: "Students",
+                                value: data?.total_students ?? "0"
+                            }}>
+                            </Feature>
+                            <Feature data={{
+                                icon: <Playback className="fill-teal-500" />,
+                                meta: "Videos",
+                                value: data?.total_videos ?? "0"
+                            }}>
+                            </Feature>
+                            <Feature data={{
+                                icon: <Certificate className="fill-teal-500" />,
+                                meta: "Certificate",
+                                value: data?.certificate == 1 ? "Tersedia" : "-"
+                            }}>
+                            </Feature>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <CSSTransition in={isSticky} timeout={300} className="meta-price" unmountOnExit>
+                        <div>
+                            <div className="meta-price w-full bg-white z-50 left-0 py-3">
+                                <div className="w-3/4 mx-auto">
+                                    <div className="flex items-center">
+                                        <div className="w-full">
+                                            <h2 className="text-gray-600">Nama Kelas</h2>
+                                            <h3 className="text-2xl text-gray-900">{data?.name ?? "Nama kelas"}</h3>
+                                        </div>
+                                        <h5 className="text-2xl text-teal-500 whitespace-nowrap mr-4">
+                                            {
+                                                data?.type == "free" ? "Free" : "Rp. " + formatThousand(data?.price ?? 0)
+                                            }
+                                        </h5>
+                                        <a href={`${process.env.NEXT_PUBLIC_MEMBERPAGE_URL}/joined/${data.id}`} target='_blank' rel='noopener noreferrer' className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 whitespace-nowrap">
+                                            {
+                                                data?.type == 'free' ? 'Enroll Now' : "Buy Now"
+                                            }
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </CSSTransition>
+                </div>
+
+                <div className="w-3/4 mx-auto mt-8">
+                    <div className="w-3/4">
+                        <section>
+                            <h6 className="font-medium text-gray-900 text-2xl mb-4">About <span className="text-teal-500">Course</span></h6>
+                            <p className="text-gray-600 text-lg leading-relaxed mb-3">{data?.description ?? "No description found"}</p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <section className="mt-24 bg-indigo-1000 py-12" ref={footer}>
+                <Footer></Footer>
             </section>
         </>
     );
