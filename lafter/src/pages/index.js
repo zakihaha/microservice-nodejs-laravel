@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import axios from 'src/configs/axios'
 
+import courses from 'src/constants/api/courses'
 import Header from 'src/pages/parts/Header.js'
 import Hero from 'src/pages/parts/Hero.js'
 import Clients from 'src/pages/parts/Clients.js'
@@ -12,6 +13,7 @@ import Footer from 'src/pages/parts/Footer'
 import Circle from 'public/images/hero-circle.svg'
 
 export default function Home({ data }) {
+	console.log(data);
 	return (
 		<>
 			<Head>
@@ -46,8 +48,8 @@ export default function Home({ data }) {
 
 Home.getInitialProps = async () => {
 	try {
-		const data = await axios.get('/courses')
-		return { data: data.data.data }
+		const data = await courses.all()
+		return { data: data.data }
 	} catch (error) {
 		return error
 	}
