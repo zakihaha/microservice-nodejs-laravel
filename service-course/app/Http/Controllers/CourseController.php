@@ -31,6 +31,11 @@ class CourseController extends Controller
     {
         $course->load('images', 'mentor', 'chapters.lessons', 'reviews');
 
+        // change images url
+        foreach ($course->images as $image) {
+            $image->image = env('APP_URL') . '/storage/' . $image->image;
+        }
+
         if (count($course['reviews']) > 0) {
             $userIds = $course['reviews']->pluck('user_id')->toArray();
             $users = getUsersByIds($userIds);

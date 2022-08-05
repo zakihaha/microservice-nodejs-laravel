@@ -10,6 +10,7 @@ import Feature from "src/parts/Details/Feature";
 import NameTag from 'public/images/detail-student.svg'
 import Playback from 'public/images/detail-video.svg'
 import Certificate from 'public/images/detail-certificate.svg'
+import CoursePhoto from "src/parts/Details/CoursePhoto";
 import Footer from "src/parts/Footer";
 import { formatThousand } from "src/helpers";
 
@@ -102,6 +103,27 @@ function DetailCourses({ data }) {
                         </div>
                     </div>
                 </div>
+
+                <div className="w-3/4 mx-auto mt-8">
+                    <div className="w-3/4">
+                        <section>
+                            <h6 className="font-medium text-gray-900 text-2xl mb-4">About <span className="text-teal-500">Course</span></h6>
+                            <p className="text-gray-600 text-lg leading-relaxed mb-3">{data?.description ?? "No description found"}</p>
+                        </section>
+
+                        <section className="mt-10">
+                            <h6 className="font-medium text-gray-900 text-2xl mb-4">Course <span className="text-teal-500">Photos</span></h6>
+                            <div className="flex justify-start items-center -mx-4 mt-6">
+                                {
+                                    data?.images?.length > 0 ?
+                                        data?.images?.map((photo, index) => <CoursePhoto data={photo.image} key={index} />)
+                                        : <div className="w-full">No Item Found</div>
+                                }
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
                 <div>
                     <CSSTransition in={isSticky} timeout={300} className="meta-price" unmountOnExit>
                         <div>
@@ -128,15 +150,6 @@ function DetailCourses({ data }) {
                         </div>
                     </CSSTransition>
                 </div>
-
-                <div className="w-3/4 mx-auto mt-8">
-                    <div className="w-3/4">
-                        <section>
-                            <h6 className="font-medium text-gray-900 text-2xl mb-4">About <span className="text-teal-500">Course</span></h6>
-                            <p className="text-gray-600 text-lg leading-relaxed mb-3">{data?.description ?? "No description found"}</p>
-                        </section>
-                    </div>
-                </div>
             </section>
 
             <section className="mt-24 bg-indigo-1000 py-12" ref={footer}>
@@ -146,11 +159,11 @@ function DetailCourses({ data }) {
     );
 }
 
-DetailCourses.getInitialProps = async (props) => {
+export async function getServerSideProps(props) {
     const { id } = props.query
     try {
         const data = await courses.detail(id)
-        return { data }
+        return { props: { data } }
     } catch (error) {
         return error
     }

@@ -15,6 +15,6 @@ module.exports = async (req, res) => {
                 message: 'Service unavailable'
             })
         }
-        return res.json(error.response.data);
+        return res.json(error.message);
     }
 }

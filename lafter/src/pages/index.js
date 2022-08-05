@@ -46,10 +46,20 @@ export default function Home({ data }) {
 	)
 }
 
-Home.getInitialProps = async () => {
+// Home.getInitialProps = async () => {
+// 	console.log('getInitialProps');
+// 	try {
+// 		const data = await courses.all()
+// 		return { data: data.data }
+// 	} catch (error) {
+// 		return error
+// 	}
+// }
+
+export async function getServerSideProps() {
 	try {
 		const data = await courses.all()
-		return { data: data.data }
+		return { props: { data: data.data } }
 	} catch (error) {
 		return error
 	}

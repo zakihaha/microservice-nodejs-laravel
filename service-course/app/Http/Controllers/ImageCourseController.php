@@ -11,10 +11,20 @@ class ImageCourseController extends Controller
     {
         $request->validate([
             'course_id' => 'required|integer|exists:courses,id',
-            'image' => 'required|string',
+            'image' => 'required',
         ]);
 
-        $imageCourse = ImageCourse::create($request->all());
+        if (request()->file('image')) {
+            $image = request()->file('image');
+            $imageUrl = $image->storeAs("images",\Str::random(6) . ".{$image->extension()}");
+        } else {
+            $imageUrl = null;
+        }
+
+        $imageCourse = ImageCourse::create([
+            'course_id' => request()->course_id,
+            'image' => $imageUrl,
+        ]);
 
         return response()->json([
             'status' => 'success',
