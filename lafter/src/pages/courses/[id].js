@@ -11,6 +11,7 @@ import NameTag from 'public/images/detail-student.svg'
 import Playback from 'public/images/detail-video.svg'
 import Certificate from 'public/images/detail-certificate.svg'
 import CoursePhoto from "src/parts/Details/CoursePhoto";
+import RenderPreview from "src/parts/Details/RenderPreview";
 import Footer from "src/parts/Footer";
 import { formatThousand } from "src/helpers";
 
@@ -120,6 +121,15 @@ function DetailCourses({ data }) {
                                         : <div className="w-full">No Item Found</div>
                                 }
                             </div>
+                        </section>
+
+                        <section className="mt-10">
+                            <h6 className="font-medium text-gray-900 text-2xl mb-4">You Will <span className="text-teal-500">Learn</span></h6>
+                            {
+                                data?.chapters?.length > 0 ?
+                                    <RenderPreview previews={data.chapters}></RenderPreview>
+                                : <div className="w-full text-center py-12">No Chapter Found</div>
+                            }
                         </section>
                     </div>
                 </div>
