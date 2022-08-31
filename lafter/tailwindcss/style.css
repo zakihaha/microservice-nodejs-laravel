@@ -10,7 +10,8 @@
     height: 30px;
 }
 
-.modal-close::before, .modal-close::after {
+.modal-close::before,
+.modal-close::after {
     @apply absolute;
     top: 50%;
     left: 50%;
@@ -103,7 +104,7 @@
 }
 
 .header-clipping .container {
-    @apply relative; 
+    @apply relative;
     z-index: 3;
 }
 
@@ -114,7 +115,8 @@
     width: 515px;
     height: 90%;
     clip-path: polygon(36% 0, 65% 0, 47% 100%, 0% 100%);
-    background: transparent linear-gradient(146.62deg, #3D47BD 17.72%, #2E37A4 56.8%);;
+    background: transparent linear-gradient(146.62deg, #3D47BD 17.72%, #2E37A4 56.8%);
+    ;
     opacity: 0.8;
 }
 
@@ -212,4 +214,25 @@
 
 .accordion-item-exit-active {
     @apply opacity-0;
+}
+
+.stars {
+    @apply relative inline-flex;
+    min-width: 200px;
+}
+
+.stars .star {
+    @apply absolute inline-flex;
+    clip-path: url(#star);
+    /* mask: url(../public/images/icon-star.svg) no-repeat center left; */
+}
+
+.stars .star:not(.placeholder) {
+    @apply bg-yellow-400;
+    z-index: 2;
+}
+
+.stars .star.placeholder {
+    @apply bg-gray-200;
+    z-index: 1;
 }
