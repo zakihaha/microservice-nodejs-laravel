@@ -8,7 +8,7 @@ export default function errorHandler(error) {
             else if (error.response.status == 401) message = "Unauthorized";
             else if (error.response.status == 403) message = "Forbidden";
             else if (error.response.status == 404) message = "Not Found";
-            else message = error.response.data.message;
+            else message = error.response.data;
 
             if (typeof message === "string") toast.error(message);
 

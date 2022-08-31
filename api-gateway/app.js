@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -22,6 +23,10 @@ const verifyToken = require('./middleware/verifyToken');
 const can = require('./middleware/permission')
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:3001'
+}));
 
 app.use(logger('dev'));
 app.use(express.json({ limit: '50mb' }));
