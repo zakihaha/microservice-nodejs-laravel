@@ -25,7 +25,7 @@ const can = require('./middleware/permission')
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3001'
+    origin: ['http://localhost:3001', 'http://localhost:3020']
 }));
 
 app.use(logger('dev'));

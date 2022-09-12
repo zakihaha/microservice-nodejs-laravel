@@ -60,7 +60,7 @@ function Courses({ data }) {
                         <h3 className="text-6xl text-center text-teal-500 font-semibold">
                             Library
                         </h3>
-                        <h4 className="text-lg text-center text-white">
+                        <h4 className="text-lg text-center text-white my-4">
                             Jangan mau kalah update dengan yang lainnya. <br />Yuk ikuti perkembangan teknologi.
                         </h4>
                         <div className="flex flex-col relative" ref={selectWrapper}>
@@ -86,20 +86,20 @@ function Courses({ data }) {
                                                 }
                                                 {
                                                     searchResponse.data.length > 0 ?
-                                                    searchResponse.data?.map((item, index) => { 
-                                                        return (
-                                                            <div key={index} className="flex items-center -mx-4 py-2 cursor-pointer hover:bg-gray-200 relative">
-                                                                <div className="w-auto px-4" style={{ width: 150 }}>
-                                                                    <img src={item?.thumbnail ?? ""} alt={item?.name ?? "Course name"} />
+                                                        searchResponse.data?.map((item, index) => {
+                                                            return (
+                                                                <div key={index} className="flex items-center -mx-4 py-2 cursor-pointer hover:bg-gray-200 relative">
+                                                                    <div className="w-auto px-4" style={{ width: 150 }}>
+                                                                        <img src={item?.thumbnail ?? ""} alt={item?.name ?? "Course name"} />
+                                                                    </div>
+                                                                    <div className="w-full px-4">
+                                                                        <h6 className="text-gray-600 text-lg">{item?.name ?? "Course name"}</h6>
+                                                                        <p className="text-gray-600">{item?.level ?? "Level"}</p>
+                                                                        <Link href="/courses/[id]" as={`/courses/${item.id}`}><a className="link-wrapped"></a></Link>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="w-full px-4">
-                                                                    <h6 className="text-gray-600 text-lg">{item?.name ?? "Course name"}</h6>
-                                                                    <p className="text-gray-600">{item?.level ?? "Level"}</p>
-                                                                    <Link href="/courses/[id]" as={`/courses/${item.id}`}><a className="link-wrapped"></a></Link>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    }) : "No courses found"
+                                                            )
+                                                        }) : "No courses found"
                                                 }
                                             </>
                                     }
@@ -109,6 +109,17 @@ function Courses({ data }) {
                     </div>
                 </div>
 
+                <div className="container mx-auto z-10 relative">
+                    <Header></Header>
+                </div>
+            </section>
+
+            <section className="container mx-auto pt-24">
+                <ListCourses data={data}></ListCourses>
+            </section>
+
+            <section className="mt-24 bg-indigo-1000 py-12">
+                <Footer></Footer>
             </section>
         </>
     );

@@ -9,7 +9,7 @@ function ListCourses({ data }) {
             <div className='flex justify-between items-center'>
                 <div className="w-auto">
                     <h2 className='text-lg text-gray-600'>New Classes</h2>
-                    <h3 className='text-xl text-gray-900'><span className='text-teal-400'>Summer Productive</span></h3>
+                    <h3 className='text-xl text-gray-900'>Summer <span className='text-teal-400'>Productive</span></h3>
                 </div>
                 <div className="w-auto">
                     <Link href="/courses"><a className="text-gray-600 hover:underline text-sm">View All Course</a></Link>
