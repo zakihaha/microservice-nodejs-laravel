@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch } from "react-router-dom";
 
@@ -6,15 +6,34 @@ import 'assets/css/style.css'
 
 import MemberRoute from 'components/Routes/MemberRoute'
 import GuestRoute from 'components/Routes/GuestRoute'
+import { setAuthorizationHeader } from 'configs/axios'
+import { populateProfile } from 'store/actions/users';
 
 import Login from 'pages/Login'
 import Register from 'pages/Register';
 import NotFound from 'pages/404'
 import Unauthenticated from 'pages/401'
 import MyClass from 'pages/MyClass'
+import users from 'constants/api/users';
+import { useDispatch } from 'react-redux';
+import courses from 'constants/api/courses';
 
 function App() {
+	const dispatch = useDispatch()
 	const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
+
+	useEffect(() => {
+		let session = null
+		if (localStorage.getItem('lafter:token')) {
+			// session = JSON.parse(localStorage.getItem('lafter:token'))
+			// console.log('token',session.token);
+			setAuthorizationHeader(JSON.parse(localStorage['lafter:token']).token)
+
+			users.details().then(detail => {
+				dispatch(populateProfile(detail.data[0]))
+			})
+		}
+	}, [dispatch])
 
 	return (
 		<>

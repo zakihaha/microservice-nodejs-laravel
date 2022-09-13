@@ -1,6 +1,14 @@
-import axios from 'src/configs/axios'
+import axios from 'configs/axios'
 
 export default {
-    all: (options = { params: { status: "published" } }) => axios.get('/courses', options).then(res => res.data),
     detail: (id) => axios.get(`/courses/${id}`).then(res => res.data),
+
+    join: (id) => axios.post(`/my-courses`, { course_id: id }),
+    mine: () => axios.get(`/my-courses`
+    // , {
+    //     headers: {
+    //         'Authorization': `${JSON.parse(localStorage['lafter:token']).token}`
+    //     }
+    // }
+    ),
 }

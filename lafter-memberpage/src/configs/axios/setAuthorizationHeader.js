@@ -1,6 +1,6 @@
-import axios from "./index";
+import instance from "./index"
 
 export default (token = null) => {
-    if (token) axios.defaults.headers.common.authorization = token
-    else delete axios.defaults.headers.common.authorization
+    instance.defaults.headers.common.authorization = `${token}`
+    // else delete instance.defaults.headers.common.authorization
 }
