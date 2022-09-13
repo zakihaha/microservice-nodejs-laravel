@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import users from 'constants/api/users';
 import { setAuthorizationHeader } from 'configs/axios'
 
+import { populateProfile } from 'store/actions/users';
+
 function LoginForm({ history }) {
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState('zaki@gmail.com')
     const [password, setPassword] = useState('zakizaki')
 
@@ -16,7 +21,9 @@ function LoginForm({ history }) {
             setAuthorizationHeader(response.data.token)
 
             let user = await users.details()
-            console.log(user.data[0]);
+
+            dispatch(populateProfile(user.data[0]))
+
             const production = process.env.REACT_APP_FRONTPAGE_URL === "http://localhost:3001" ? "Domain = localhost" : ""
             localStorage.setItem("lafter:token", JSON.stringify({
                 ...response.data, email
