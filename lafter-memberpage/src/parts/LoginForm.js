@@ -4,14 +4,16 @@ import { useDispatch } from 'react-redux';
 
 import users from 'constants/api/users';
 import { setAuthorizationHeader } from 'configs/axios'
-
 import { populateProfile } from 'store/actions/users';
+
+import useForm from 'helpers/hooks/useForm';
 
 function LoginForm({ history }) {
     const dispatch = useDispatch();
 
-    const [email, setEmail] = useState('zaki@gmail.com')
-    const [password, setPassword] = useState('zakizaki')
+    const [{ email, password }, setState] = useForm({
+        email: "", password: ""
+    })
 
     const submit = async (e) => {
         e.preventDefault()
@@ -57,11 +59,11 @@ function LoginForm({ history }) {
                 <form onSubmit={submit} method="post">
                     <div className="flex flex-col mb-4">
                         <label htmlFor="email" className='text-lg mb-2'>Email Address</label>
-                        <input type="email" name='email' className='bg-white focus:outline-none px-6 py-3 w-full border border-gray-600 focus:border-teal-500' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Your email address' />
+                        <input type="email" name='email' className='bg-white focus:outline-none px-6 py-3 w-full border border-gray-600 focus:border-teal-500' value={email} onChange={setState} placeholder='Your email address' />
                     </div>
                     <div className="flex flex-col mb-4">
                         <label htmlFor="password" className='text-lg mb-2'>Password</label>
-                        <input type="password" name='password' className='bg-white focus:outline-none px-6 py-3 w-full border border-gray-600 focus:border-teal-500' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Your email address' />
+                        <input type="password" name='password' className='bg-white focus:outline-none px-6 py-3 w-full border border-gray-600 focus:border-teal-500' value={password} onChange={setState} placeholder='Your email address' />
                     </div>
                     <button type='submit' className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-4 w-full">Register Now</button>
                 </form>
