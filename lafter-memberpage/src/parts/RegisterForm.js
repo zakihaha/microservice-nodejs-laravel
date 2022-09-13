@@ -113,11 +113,11 @@ function RegisterForm({ history }) {
                 <div className="relative" style={{ width: 369, height: 440 }}>
                     <div className="absolute border-indigo-700 border-2 -mt-8 -ml-16 left-0" style={{ width: 324, height: 374 }}>
                         <div className="absolute w-full h-full -right-8 -bottom-8">
-                            <img src="/assets/images/tamara.jpg" alt="Girl with Laptop" />
+                            <img src="/assets/images/james.jpg" alt="Girl with Laptop" />
                         </div>
                         <div className="absolute z-10 bg-white -bottom-24 -right-24 py-3 px-4" style={{ width: 290 }}>
-                            <p className="text-gray-900 mb-2">Metode belajar yang santai seperti nonton drakor di Netflix</p>
-                            <span className="text-gray-600">Alyssa, Apps Developer</span>
+                            <p className="text-gray-900 mb-2">Semua materi terstruktrur baik dan mentor yang sangat lihai</p>
+                            <span className="text-gray-600">James, Apps Developer</span>
                         </div>
                     </div>
                 </div>
