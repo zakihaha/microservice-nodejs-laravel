@@ -65,7 +65,7 @@ function LoginForm({ history }) {
                         <label htmlFor="password" className='text-lg mb-2'>Password</label>
                         <input type="password" name='password' className='bg-white focus:outline-none px-6 py-3 w-full border border-gray-600 focus:border-teal-500' value={password} onChange={setState} placeholder='Your email address' />
                     </div>
-                    <button type='submit' className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-4 w-full">Register Now</button>
+                    <button type='submit' className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-4 w-full">Masuk</button>
                 </form>
             </div>
 
