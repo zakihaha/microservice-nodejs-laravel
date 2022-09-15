@@ -12,23 +12,24 @@ module.exports = async (req, res) => {
         if (!refreshToken || !email) {
             return res.status(400).json({
                 status: 'error',
-                message: 'Bad request'
+                message: 'Invalid token'
             });
         }
 
         await api.get('/refresh_tokens', { params: { refresh_token: refreshToken } });
 
         jwt.verify(refreshToken, JWT_SECRET_REFRESH_TOKEN, (err, decoded) => {
+            console.log('refreshToken', refreshToken);
             if (err) {
-                return res.status(401).json({
+                return res.status(403).json({
                     status: 'error',
-                    message: err.message
+                    message: err.message,
                 });
             }
 
             // check if email is the same
             if (decoded.data.email !== email) {
-                return res.status(401).json({
+                return res.status(400).json({
                     status: 'error',
                     message: 'Invalid email'
                 });

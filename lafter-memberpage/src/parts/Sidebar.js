@@ -10,6 +10,7 @@ function Sidebar({ match, history }) {
     }
 
     const users = useSelector(state => state.users);
+    console.log('user', users);
 
     const logout = () => {
         localStorage.removeItem('lafter:token');

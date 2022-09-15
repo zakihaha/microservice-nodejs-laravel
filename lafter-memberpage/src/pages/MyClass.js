@@ -6,7 +6,7 @@ import { statusCourses, fetchCourses, messageCourses } from 'store/actions/cours
 import { useDispatch, useSelector } from 'react-redux';
 import ListClassItem from 'parts/ListClassItem';
 import Loading from 'parts/Loading';
-import { setAuthorizationHeader } from 'configs/axios';
+import instance, { setAuthorizationHeader } from 'configs/axios';
 
 const EmptyState = () => {
     return <section className='flex h-screen items-center'>
@@ -31,14 +31,14 @@ const EmptyState = () => {
 function MyClass(props) {
     const dispatch = useDispatch();
     const COURSES = useSelector(state => state.courses);
-    setAuthorizationHeader(JSON.parse(localStorage['lafter:token']).token)
+    console.log(COURSES);
 
     const getClass = async () => {
         dispatch(statusCourses("loading"));
         try {
-            const response = await courses.mine();
+            let response = await courses.mine();
             dispatch(fetchCourses(response.data));
-            dispatch(statusCourses("success"));
+            dispatch(statusCourses("ok"));
         } catch (error) {
             dispatch(messageCourses(error.message));
             dispatch(statusCourses("error"));
@@ -48,7 +48,9 @@ function MyClass(props) {
     useEffect(() => {
         window.scroll(0, 0)
 
-        getClass();
+        setTimeout(() => {
+            getClass();
+        }, 500);
     }, []);
 
     return (
@@ -75,7 +77,8 @@ function MyClass(props) {
                             </section>
                         </>
                         :
-                        <EmptyState />)
+                        <EmptyState />
+                        )
                     }
                 </div>
             </main>
