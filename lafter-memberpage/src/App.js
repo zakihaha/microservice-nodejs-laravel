@@ -19,6 +19,7 @@ import Unauthenticated from 'pages/401'
 import MyClass from 'pages/MyClass'
 import Joined from 'pages/Joined'
 import DetailClass from 'pages/DetailClass'
+import Settings from 'pages/Settings'
 
 function App() {
 	const dispatch = useDispatch()
@@ -27,8 +28,6 @@ function App() {
 	useEffect(() => {
 		let session = null
 		if (localStorage.getItem('lafter:token')) {
-			// session = JSON.parse(localStorage.getItem('lafter:token'))
-			// console.log('token',session.token);
 			setAuthorizationHeader(JSON.parse(localStorage['lafter:token']).token)
 
 			users.details().then(detail => {
@@ -49,6 +48,7 @@ function App() {
 					<MemberRoute path='/joined/:class' component={Joined}></MemberRoute>
 					<MemberRoute path='/courses/:class/:chapter/:uid' component={DetailClass}></MemberRoute>
 					<MemberRoute path='/courses/:class/' component={DetailClass}></MemberRoute>
+					<MemberRoute path='/settings' component={Settings}></MemberRoute>
 
 					<Route path="*" component={NotFound}></Route>
 				</Switch>

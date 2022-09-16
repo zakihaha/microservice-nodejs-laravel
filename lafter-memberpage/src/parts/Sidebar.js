@@ -1,20 +1,27 @@
 import React from 'react';
-
-import { ReactComponent as DefaultUser } from 'assets/images/default-avatar.svg';
 import { useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+
+import users from 'constants/api/users';
+
+import { ReactComponent as DefaultUser } from 'assets/images/default-avatar.svg';
 
 function Sidebar({ match, history }) {
     const getNavLinkClass = (path) => {
         return match.path === path ? 'active bg-indigo-900 text-white' : 'text-indigo-500';
     }
 
-    const users = useSelector(state => state.users);
+    const USERS = useSelector(state => state.users);
     console.log('user', users);
 
-    const logout = () => {
-        localStorage.removeItem('lafter:token');
-        history.push('/login');
+    const logout = async() => {
+        try {
+            await users.logout()
+            localStorage.removeItem('lafter:token');
+            history.push('/login');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -23,14 +30,14 @@ function Sidebar({ match, history }) {
                 <div className="flex flex-col text-center mt-8">
                     <div className="border border-indigo-500 mx-auto p-2 inline-flex rounded-full overflow-hidden mb-3">
                         {
-                            users?.avatar ? <img className='rounded-full' src={users?.avatar} alt={users?.name} style={{ width: 90, height: 90 }} />
+                            USERS?.avatar ? <img className='rounded-full object-cover' src={USERS?.avatar} alt={USERS?.name} style={{ width: 90, height: 90 }} />
                                 :
                                 <DefaultUser className='rounded-full fill-indigo-500' style={{ width: 90, height: 90 }}></DefaultUser>
                         }
                     </div>
 
-                    <h6 className='text-white text-xl'>{users?.name ?? "Username"}</h6>
-                    <span className='text-indigo-500 text-sm'>{users?.professions ?? "Profession"}</span>
+                    <h6 className='text-white text-xl'>{USERS?.name ?? "Username"}</h6>
+                    <span className='text-indigo-500 text-sm'>{USERS?.profession ?? "Profession"}</span>
                 </div>
 
                 <ul className="main-menu mt-12">
@@ -66,7 +73,7 @@ function Sidebar({ match, history }) {
                     <li>
                         <button
                             onClick={logout}
-                            className={["nav-link relative flex items-center py-3 px-5 transition-all duration-200 hover:text-white active:text-white text-white focus:outline-none w-full text-left"].join(" ")}>
+                            className={["nav-link relative flex items-center py-3 px-5 transition-all duration-200 hover:text-white active:text-white text-indigo-500 focus:outline-none w-full text-left"].join(" ")}>
                             Logout
                         </button>
                     </li>
