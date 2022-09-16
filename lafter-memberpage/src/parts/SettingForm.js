@@ -78,23 +78,6 @@ function SettingForm({ details }) {
             console.log(err);
             setErrors(err?.response?.data?.message)
         }
-        // users.update(payload).then(res => {
-        //     toast.success("Profile updated")
-        //     setState({
-        //         ...state,
-        //         password: ""
-        //     })
-        //     setErrors = null
-        //     console.log(res.data);
-        //     dispatch(populateProfile(
-        //         {
-        //             ...details,
-        //             res.data
-        //         }
-        //     ))
-        // }).catch(err => {
-        //     setErrors(err?.response?.data?.message)
-        // })
     }
 
     const ERRORS = fieldErrors(errors)
@@ -113,7 +96,7 @@ function SettingForm({ details }) {
                             }
                         </div>
                     </div>
-                    <div className="w-full-flex flex-col">
+                    <div className="w-full flex flex-col">
                         <span className='text-gray-600'>Add your picture...</span>
                         <div>
                             <input type="file" name="avatar" id="avatar" ref={addPicture} onChange={previewImage} className='hidden' />

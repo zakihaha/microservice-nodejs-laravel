@@ -12,7 +12,6 @@ function Sidebar({ match, history }) {
     }
 
     const USERS = useSelector(state => state.users);
-    console.log('user', users);
 
     const logout = async() => {
         try {

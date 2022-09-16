@@ -564,6 +564,9 @@ video {
 .mt-24{
   margin-top: 6rem;
 }
+.mt-5{
+  margin-top: 1.25rem;
+}
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -633,6 +636,15 @@ video {
 .w-5\/12{
   width: 41.666667%;
 }
+.w-auto{
+  width: auto;
+}
+.w-3\/12{
+  width: 25%;
+}
+.w-2\/12{
+  width: 16.666667%;
+}
 .w-1\/6{
   width: 16.666667%;
 }
@@ -642,14 +654,8 @@ video {
 .w-1\/4{
   width: 25%;
 }
-.w-3\/12{
-  width: 25%;
-}
 .w-1\/12{
   width: 8.333333%;
-}
-.w-auto{
-  width: auto;
 }
 .w-24{
   width: 6rem;
@@ -766,7 +772,7 @@ video {
 }
 .border-red-500{
   --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+  border-color: rgb(255 52 52 / var(--tw-border-opacity));
 }
 .border-teal-500{
   --tw-border-opacity: 1;
@@ -784,6 +790,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(22 26 79 / var(--tw-bg-opacity));
 }
+.bg-gray-250{
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 237 237 / var(--tw-bg-opacity));
+}
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -791,6 +801,10 @@ video {
 .bg-indigo-700{
   --tw-bg-opacity: 1;
   background-color: rgb(77 85 188 / var(--tw-bg-opacity));
+}
+.bg-gray-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 219 219 / var(--tw-bg-opacity));
 }
 .bg-indigo-900{
   --tw-bg-opacity: 1;
@@ -806,10 +820,6 @@ video {
 }
 .bg-black\/50{
   background-color: rgb(0 0 0 / 0.5);
-}
-.bg-gray-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 219 219 / var(--tw-bg-opacity));
 }
 .fill-indigo-500{
   fill: #53589D;
@@ -936,7 +946,7 @@ video {
 }
 .text-red-500{
   --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+  color: rgb(255 52 52 / var(--tw-text-opacity));
 }
 .text-teal-500{
   --tw-text-opacity: 1;
@@ -1277,6 +1287,11 @@ video {
 .hover\:bg-orange-400:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-300:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 219 219 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-indigo-800:hover{

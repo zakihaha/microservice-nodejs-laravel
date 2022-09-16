@@ -19,6 +19,7 @@ import Unauthenticated from 'pages/401'
 import MyClass from 'pages/MyClass'
 import Joined from 'pages/Joined'
 import DetailClass from 'pages/DetailClass'
+import Transactions from 'pages/Transactions'
 import Settings from 'pages/Settings'
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
 					<MemberRoute path='/joined/:class' component={Joined}></MemberRoute>
 					<MemberRoute path='/courses/:class/:chapter/:uid' component={DetailClass}></MemberRoute>
 					<MemberRoute path='/courses/:class/' component={DetailClass}></MemberRoute>
+					<MemberRoute path='/transactions' component={Transactions}></MemberRoute>
 					<MemberRoute path='/settings' component={Settings}></MemberRoute>
 
 					<Route path="*" component={NotFound}></Route>
